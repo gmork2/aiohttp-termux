@@ -21,3 +21,9 @@ class CommandView(BaseCommandView):
     def __init__(self, resource):
         super().__init__()
         self.resource = resource
+
+
+class Resource:
+    def __init__(self, prefix, *args):
+        self.prefix = prefix
+        self.endpoint = CommandView(self)
