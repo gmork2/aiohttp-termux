@@ -15,3 +15,9 @@ class BaseCommandView:
 
     def register_method(self, method_name, method):
         self.methods[method_name.upper()] = method
+
+
+class CommandView(BaseCommandView):
+    def __init__(self, resource):
+        super().__init__()
+        self.resource = resource
