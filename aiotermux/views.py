@@ -3,6 +3,7 @@ import logging
 
 from aiohttp.web_exceptions import HTTPMethodNotAllowed, HTTPBadRequest
 from aiohttp.web import Request
+from aiohttp.web_urldispatcher import UrlDispatcher
 
 DEFAULT_METHODS = ('POST', 'GET')
 
@@ -41,3 +42,8 @@ class Resource:
     def __init__(self, prefix, *args):
         self.prefix = prefix
         self.endpoint = CommandView(self)
+
+    def register(self, router: UrlDispatcher):
+        router.add_route('*', '/{prefix}/{{path:.*}}'.format(
+            prefix=self.prefix), self.endpoint.dispatch)
+
