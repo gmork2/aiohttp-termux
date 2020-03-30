@@ -7,9 +7,8 @@ import sys
 # Usage: termux-battery-status
 # Get the status of the device battery.
 
-USAGE = """termux-battery-status
-Get the status of the device battery.
-"""
+USAGE = """termux-battery-status"""
+DESCRIPTION = """Get the status of the device battery."""
 
 DATA = {
   "health": "GOOD",
@@ -22,7 +21,7 @@ DATA = {
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(USAGE)
+    parser = argparse.ArgumentParser(usage=USAGE, description=DESCRIPTION)
     args = parser.parse_args()
     json_data = json.dumps(DATA)
 

@@ -7,9 +7,8 @@ import sys
 # Usage: termux-audio-info
 # Get information about audio capabilities.
 
-USAGE = """termux-audio-info
-Get information about audio capabilities.
-"""
+USAGE = """termux-audio-info"""
+DESCRIPTION = """Get information about audio capabilities."""
 
 DATA = {
   "PROPERTY_OUTPUT_SAMPLE_RATE": "48000",
@@ -24,7 +23,7 @@ DATA = {
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(USAGE)
+    parser = argparse.ArgumentParser(usage=USAGE, description=DESCRIPTION)
     args = parser.parse_args()
     json_data = json.dumps(DATA)
 
