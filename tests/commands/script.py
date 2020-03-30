@@ -1,13 +1,12 @@
 #!/usr/bin/env python
 import argparse
-import random
+import sys
+from datetime import datetime
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-
-    # parser.add_argument('name')
-    # parser.add_argument('age')
-
     args = parser.parse_args()
-    print("Hello")
+
+    sys.stdout.write(f'\r{datetime.now()}\n')
+    sys.stdout.flush()
