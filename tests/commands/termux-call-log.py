@@ -19,7 +19,7 @@ ERROR = {
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(USAGE)
+    parser = argparse.ArgumentParser(usage=USAGE, description=DESCRIPTION)
     parser.add_argument('-l', type=int, metavar='limit', default=10, help='offset in call log list (default: 10)')
     parser.add_argument('-o', type=int, metavar='offset', default=0, help='offset in call log list (default: 0)')
     args = parser.parse_args()
