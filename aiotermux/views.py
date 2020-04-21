@@ -5,6 +5,9 @@ from typing import Callable
 from aiohttp.web_exceptions import HTTPMethodNotAllowed, HTTPBadRequest
 from aiohttp.web import Request
 from aiohttp.web_urldispatcher import UrlDispatcher
+from aiohttp import web
+
+from utils import make_command, run_command
 
 DEFAULT_METHODS = ('POST', 'GET')
 
@@ -37,6 +40,14 @@ class CommandView(BaseCommandView):
     def __init__(self, resource: 'Resource'):
         super().__init__()
         self.resource = resource
+
+    async def post(self, *args, **kwargs):
+        # param1 = dict(request.rel_url.query)
+
+        cmd = make_command(*args, **kwargs)
+        response, returncode = await run_command(cmd)
+
+        return web.json_response({'data': response})
 
 
 class Resource:
