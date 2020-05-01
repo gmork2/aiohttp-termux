@@ -21,9 +21,9 @@ def check_brightness(value: Union[int, str]) -> Union[int, str]:
         brightness = int(value)
     except ValueError:
         brightness = value
-    else:
-        if brightness < 0 or brightness > 255:
-            raise argparse.ArgumentTypeError(f"Invalid brightness value ({brightness})")
+
+    if brightness != 'auto' and (brightness < 0 or brightness > 255):
+        raise argparse.ArgumentTypeError(f"Invalid brightness value ({brightness})")
     return brightness
 
 
